@@ -1,7 +1,7 @@
 module Mapper
 
 using ..Model
-using SQLite, DBInterface, Strapping, Tables, LibPQ
+using SQLite, DBInterface, Strapping, Tables
 
 const DB = Ref{SQLite.DB}()
 getdb() = DB[]
