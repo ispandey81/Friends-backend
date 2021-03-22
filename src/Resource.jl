@@ -17,6 +17,9 @@ HTTP.@register(ROUTER, "GET", "/api/image/id/*", getImageById)
 getImageByText(req) = Service.getImageByText(HTTP.URIs.unescapeuri(HTTP.URIs.splitpath(req.target)[4]))::Vector{Image}
 HTTP.@register(ROUTER, "GET", "/api/image/text/*", getImageByText)
 
+getRandomImageId(req) = Service.getRandomImageId()::Int64
+HTTP.@register(ROUTER, "GET", "/api/image/random", getRandomImageId)
+
 function requestHandler(req)
     obj = HTTP.handle(ROUTER, req)
     return HTTP.Response(200, headers; body = JSON3.write(obj))
