@@ -33,6 +33,8 @@ get_by_id(id) = Strapping.construct(Image, DBInterface.execute(DBInterface.@prep
 
 get_by_text(text) = Strapping.construct(Vector{Image}, DBInterface.execute(getdb(), "SELECT * FROM friends_images WHERE text like '%$text%'"))
 
+get_image_ids_by_text(text) = Strapping.construct(Vector{ImageId}, DBInterface.execute(getdb(), "SELECT id FROM friends_images WHERE text like '%$text%'"))
+
 getAllImages() = Strapping.construct(Vector{Image}, DBInterface.execute(DBInterface.@prepare(getdb, "SELECT * FROM friends_images")))
 
 end # module

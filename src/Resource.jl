@@ -8,14 +8,18 @@ const ROUTER = HTTP.Router()
 headers = [
     "Access-Control-Allow-Origin" => "*",
     "Access-Control-Allow-Headers" => "*",
-    "Access-Control-Allow-Methods" => "POST, GET, OPTIONS"
+    "Access-Control-Allow-Methods" => "POST, GET, OPTIONS",
+    "Transfer-Encoding" => "gzip, chunked"
 ]
 
 getImageById(req) = Service.getImageById(parse(Int, HTTP.URIs.splitpath(req.target)[4]))::Image
 HTTP.@register(ROUTER, "GET", "/api/image/id/*", getImageById)
 
-getImageByText(req) = Service.getImageByText(HTTP.URIs.unescapeuri(HTTP.URIs.splitpath(req.target)[4]))::Vector{Image}
-HTTP.@register(ROUTER, "GET", "/api/image/text/*", getImageByText)
+# getImageByText(req) = Service.getImageByText(HTTP.URIs.unescapeuri(HTTP.URIs.splitpath(req.target)[4]))::ApiResponse
+# HTTP.@register(ROUTER, "GET", "/api/image/text/*", getImageByText)
+
+getImageIdsByText(req) = Service.getImageIdsByText(HTTP.URIs.unescapeuri(HTTP.URIs.splitpath(req.target)[4]))::ApiResponse
+HTTP.@register(ROUTER, "GET", "/api/image/text/*", getImageIdsByText)
 
 getRandomImageId(req) = Service.getRandomImageId()::Int64
 HTTP.@register(ROUTER, "GET", "/api/image/random", getRandomImageId)
