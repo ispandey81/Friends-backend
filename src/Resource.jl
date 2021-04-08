@@ -1,7 +1,7 @@
 module Resource
 
 using Dates, HTTP, JSON3
-using ..Model, ..Service
+using ..Model, ..Service, ..Workers
 
 const ROUTER = HTTP.Router()
 
@@ -15,7 +15,7 @@ headers = [
 getImageById(req) = Service.getImageById(parse(Int, HTTP.URIs.splitpath(req.target)[4]))::Image
 HTTP.@register(ROUTER, "GET", "/api/image/id/*", getImageById)
 
-getImageIdsByText(req) = Service.getImageIdsByText(HTTP.URIs.unescapeuri(HTTP.URIs.splitpath(req.target)[4]))::ApiResponse
+getImageIdsByText(req) = fetch(Workers.@async(Service.getImageIdsByText(HTTP.URIs.unescapeuri(HTTP.URIs.splitpath(req.target)[4]))::ApiResponse))
 HTTP.@register(ROUTER, "GET", "/api/image/text/*", getImageIdsByText)
 
 getRandomImageId(req) = Service.getRandomImageId()::Int64
