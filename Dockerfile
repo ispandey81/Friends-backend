@@ -11,4 +11,4 @@ RUN julia deploy/packagecompile.jl
 
 EXPOSE 8080
 
-ENTRYPOINT ["julia", "-JFriends.so", "-e", "Friends.run(\"test/friendsdb.sqlite\")"]
+ENTRYPOINT ["julia", "-JFriends.so", "-t", "2", "-e", "Friends.run(\"test/friendsdb.sqlite\")"]
