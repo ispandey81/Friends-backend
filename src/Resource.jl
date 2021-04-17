@@ -41,7 +41,7 @@ function requestHandler(req)
 end
 
 function run()
-    HTTP.serve(requestHandler, "0.0.0.0", 8080)
+    HTTP.serve(requestHandler, "0.0.0.0", parse(Int, ARGS[1]))
 end
 
 end # module
