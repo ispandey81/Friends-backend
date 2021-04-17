@@ -1,1 +1,1 @@
-web: julia --project deploy/packagecompile.jl $PORT
+web: julia --project deploy/precompile.jl $PORT
