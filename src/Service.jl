@@ -20,7 +20,8 @@ end
 
 function getRandomImageId()::Int64
     # total count of images is 84403
-    rand(1: 84403)
+    # production app only has 3 episodes of first season
+    rand(1: 1085)
 end
 
 end # module

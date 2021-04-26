@@ -21,6 +21,9 @@ HTTP.@register(ROUTER, "GET", "/api/image/text/*", getImageIdsByText)
 getRandomImageId(req) = Service.getRandomImageId()::Int64
 HTTP.@register(ROUTER, "GET", "/api/image/random", getRandomImageId)
 
+sayHello(req) = "Namaste"
+HTTP.@register(ROUTER, "GET", "/", sayHello)
+
 function requestHandler(req)
     start = Dates.now(Dates.UTC)
     @info (timestamp = start, event = "ServiceRequestBegin", tid = Threads.threadid(), method = req.method, target = req.target)
@@ -41,7 +44,7 @@ function requestHandler(req)
 end
 
 function run()
-    HTTP.serve(requestHandler, "0.0.0.0", 8080)
+    HTTP.serve(requestHandler, "0.0.0.0", parse(Int, ARGS[1]))
 end
 
 end # module
