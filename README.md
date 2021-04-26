@@ -1,6 +1,5 @@
 # Friends
-Julia back end for mitra
+Julia back end for friends
 
-Make sure the tests run
-Include a dockerfile and make it run in a container
+Using julia buildpack for deploying to heroku.
 
