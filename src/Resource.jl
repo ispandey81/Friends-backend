@@ -8,8 +8,7 @@ const ROUTER = HTTP.Router()
 headers = [
     "Access-Control-Allow-Origin" => "*",
     "Access-Control-Allow-Headers" => "*",
-    "Access-Control-Allow-Methods" => "POST, GET, OPTIONS",
-    "Transfer-Encoding" => "gzip, chunked"
+    "Access-Control-Allow-Methods" => "POST, GET, OPTIONS"
 ]
 
 getImageById(req) = Service.getImageById(parse(Int, HTTP.URIs.splitpath(req.target)[4]))::Image
