@@ -3,7 +3,7 @@ module Client
 using HTTP, JSON3
 using ..Model
 
-const SERVER = Ref{String}("https://friends-first-draft.herokuapp.com")
+const SERVER = Ref{String}("http://localhost:8080")
 
 function getImageById(id)
     resp = HTTP.get(string(SERVER[], "/api/image/id/$id"))

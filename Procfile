@@ -1,1 +1,0 @@
-web: julia --project deploy/precompile.jl $PORT
