@@ -1,0 +1,14 @@
+name: Scheduled Ping
+
+on:
+  schedule:
+    # Runs every 12 minutes
+    - cron: '*/12 * * * *'
+  workflow_dispatch: # Allows you to run it manually for testing
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping URL
+        run: curl -I https://friends-services.onrender.com
