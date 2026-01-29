@@ -11,4 +11,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Ping URL
-        run: curl -I https://friends-services.onrender.com
+        run: curl -v https://friends-services.onrender.com
